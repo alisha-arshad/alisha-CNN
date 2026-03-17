@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KNN — خبر نامہ نیٹ ورک</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOPBAR ============ -->
+<div id="topbar">
+  <div class="tb-links">
+    <a onclick="nav('world')">دنیا</a>
+    <a onclick="nav('politics')">سیاست</a>
+    <a onclick="nav('tech')">ٹیکنالوجی</a>
+    <a onclick="nav('sports')">کھیل</a>
+    <a onclick="nav('video')">ویڈیو</a>
+  </div>
+  <div class="tb-right">
+    <div class="live-pill"><div class="live-dot"></div>LIVE</div>
+    <div id="topTime"></div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-inner">
+    <div class="logo" onclick="nav('home')">
+      <div class="logo-knn">KNN</div>
+      <div class="logo-text">
+        <div class="logo-urdu">خبر نامہ نیٹ ورک</div>
+        <div class="logo-tag">سچ کی آواز — ہر خبر، ہر لمحہ</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="search-box">
+        <input type="text" placeholder="خبریں تلاش کریں..." id="searchInput">
+        <button>&#128269;</button>
+      </div>
+      <button class="btn-sub">SUBSCRIBE</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="nav('home')">ہوم</button>
+    <button class="nav-btn" onclick="nav('world')">دنیا</button>
+    <button class="nav-btn" onclick="nav('politics')">سیاست</button>
+    <button class="nav-btn" onclick="nav('tech')">ٹیکنالوجی</button>
+    <button class="nav-btn" onclick="nav('sports')">کھیل</button>
+    <button class="nav-btn" onclick="nav('health')">صحت</button>
+    <button class="nav-btn" onclick="nav('entertainment')">انٹرٹینمنٹ</button>
+    <button class="nav-btn" onclick="nav('business')">کاروبار</button>
+    <button class="nav-btn" onclick="nav('video')">ویڈیو</button>
+    <button class="nav-btn" onclick="nav('opinion')">رائے</button>
+  </div>
+</nav>
+
+<!-- ============ BREAKING TICKER ============ -->
+<div class="breaking">
+  <div class="br-label">BREAKING <span>&#9679;</span></div>
+  <div class="ticker-wrap">
+    <div class="ticker" id="tickerEl">
+      <span>پاکستان نے نئے اقتصادی پیکج کا اعلان کیا — IMF سے مزید مدد ملنے کی امید</span>
+      <span>سپریم کورٹ نے کراچی میں اہم کیس کا فیصلہ سنا دیا</span>
+      <span>پاکستان کرکٹ ٹیم نے بھارت کو شاندار جیت سے شکست دی</span>
+      <span>KSE-100 نے ایک لاکھ کا نیا ریکارڈ قائم کر دیا</span>
+      <span>مصنوعی ذہانت میں نئی پیش رفت — پاکستان بھی شامل</span>
+      <span>پاکستان نے نئے اقتصادی پیکج کا اعلان کیا — IMF سے مزید مدد ملنے کی امید</span>
+      <span>سپریم کورٹ نے کراچی میں اہم کیس کا فیصلہ سنا دیا</span>
+      <span>پاکستان کرکٹ ٹیم نے بھارت کو شاندار جیت سے شکست دی</span>
+      <span>KSE-100 نے ایک لاکھ کا نیا ریکارڈ قائم کر دیا</span>
+      <span>مصنوعی ذہانت میں نئی پیش رفت — پاکستان بھی شامل</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WEATHER ============ -->
+<div class="weather-strip">
+  <div class="w-city"><span class="w-icon">&#9728;</span><span class="w-name">لاہور</span><span class="w-temp">28°C</span></div>
+  <div class="w-city"><span class="w-icon">&#9729;</span><span class="w-name">کراچی</span><span class="w-temp">33°C</span></div>
+  <div class="w-city"><span class="w-icon">&#9730;</span><span class="w-name">اسلام آباد</span><span class="w-temp">22°C</span></div>
+  <div class="w-city"><span class="w-icon">&#9728;</span><span class="w-name">پشاور</span><span class="w-temp">25°C</span></div>
+  <div class="w-city"><span class="w-icon">&#9729;</span><span class="w-name">کوئٹہ</span><span class="w-temp">18°C</span></div>
+  <div class="w-city"><span class="w-icon">&#9730;</span><span class="w-name">ملتان</span><span class="w-temp">31°C</span></div>
+</div>
+
+<!-- ======================================================
+     HOME PAGE
+     ====================================================== -->
+<div class="page active" id="page-home">
+  <div class="main">
+
+    <!-- HERO -->
+    <div class="hero-grid">
+      <div class="hero-main" onclick="nav('article')">
+        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=80" alt="Hero">
+        <div class="hero-overlay">
+          <div class="h-cat">دنیا</div>
+          <h2 class="h-title">عالمی سیاست میں نئی کروٹ: نئے اتحاد اور جیو پولیٹکس کا نیا نقشہ</h2>
+          <p class="h-desc">آج کی دنیا میں سیاسی منظر نامہ تیزی سے بدل رہا ہے — نئے اتحاد، مختلف مواقف اور علاقائی شراکت داریوں نے عالمی تجزیہ نگاروں کو سوچنے پر مجبور کر دیا ہے۔</p>
+          <div class="h-meta"><span>احمد رضا خان</span> · 2 گھنٹے قبل · 12 منٹ مطالعہ</div>
+        </div>
+      </div>
+      <div class="hero-sidebar">
+        <div class="side-item" onclick="nav('article')">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80" alt="">
+          <div class="s-cat">ٹیکنالوجی</div>
+          <div class="s-title">مصنوعی ذہانت کی دنیا میں نئی پیش رفت — پاکستان کا حصہ</div>
+          <div class="s-meta">45 منٹ قبل</div>
+        </div>
+        <div class="side-item" onclick="nav('article')">
+          <img src="https://images.unsplash.com/photo-1540747913346-19212a4b423e?w=400&q=80" alt="">
+          <div class="s-cat">کھیل</div>
+          <div class="s-title">پاکستان کرکٹ ٹیم نے شاندار جیت حاصل کی — قوم میں خوشی کی لہر</div>
+          <div class="s-meta">1 گھنٹہ قبل</div>
+        </div>
+        <div class="side-item" onclick="nav('article')">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80" alt="">
+          <div class="s-cat">کاروبار</div>
+          <div class="s-title">KSE-100 نے نیا ریکارڈ توڑا — سرمایہ کاروں میں جوش و خروش</div>
+          <div class="s-meta">2 گھنٹے قبل</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LATEST -->
+    <div class="sec-head">
+      <div class="sec-dot"></div>
+      <div class="sec-title">تازہ خبریں</div>
+      <div class="sec-line"></div>
+      <span class="sec-more" onclick="nav('world')">مزید دیکھیں ←</span>
+    </div>
+    <div class="grid-4">
+      <div class="ncard" onclick="nav('article')">
+        <div class="ncard-img"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" alt=""></div>
+        <div class="ncard-body"><div class="nc-cat">صحت</div><div class="nc-title">نئی ویکسین نے 90 فیصد کامیابی حاصل کی — طبی ماہرین نے سراہا</div><div class="nc-meta">30 منٹ قبل · ڈاکٹر سارہ احمد</div></div>
+      </div>
+      <div class="ncard" onclick="nav('article')">
+        <div class="ncard-img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80" alt=""></div>
+        <div class="ncard-body"><div class="nc-cat">ماحول</div><div class="nc-title">پاکستان میں ماحولیاتی تبدیلی کے اثرات — سمندر کا بڑھتا درجہ حرارت</div><div class="nc-meta">1 گھنٹہ قبل · زارا نور</div></div>
+      </div>
+      <div class="ncard" onclick="nav('article')">
+        <div class="ncard-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&q=80" alt=""></div>
+        <div class="ncard-body"><div class="nc-cat">تعلیم</div><div class="nc-title">پاکستان میں ڈیجیٹل تعلیم کی نئی لہر — 2 کروڑ طلبا کا فائدہ</div><div class="nc-meta">2 گھنٹے قبل · پروفیسر عمران قریشی</div></div>
+      </div>
+      <div class="ncard" onclick="nav('article')">
+        <div class="ncard-img"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&q=80" alt=""></div>
+        <div class="ncard-body"><div class="nc-cat">خلا</div><div class="nc-title">مریخ پر پانی کے نئے ثبوت ملے — پاکستان کا خلائی مشن بھی جلد</div><div class="nc-meta">3 گھنٹے قبل · بلال شیخ</div></div>
+      </div>
+    </div>
+
+    <!-- VIDEO SECTION -->
+    <div class="home-video-section">
+      <div class="hvs-inner">
+        <div class="hvs-head">
+          <div class="play-ico"></div>
+          <div class="hvs-title">ویڈیو رپورٹس</div>
+          <div class="hvs-line"></div>
+          <span class="hvs-more" onclick="nav('video')">تمام ویڈیوز ←</span>
+        </div>
+        <div class="vhome-grid">
+          <div class="vhome-card featured" onclick="nav('video')">
+            <div class="vhc-thumb" style="height:280px;">
+              <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&q=80" alt="" style="height:280px;">
+              <div class="vhc-play"></div>
+              <div class="vhc-live">&#9679; LIVE</div>
+            </div>
+            <div class="vhc-body">
+              <div class="vhc-cat">براہ راست</div>
+              <div class="vhc-title">قومی اسمبلی کا اجلاس — بجٹ پر اہم بحث جاری، وزیر خزانہ کا خطاب</div>
+              <div class="vhc-views" id="liveViewCount">45,230 ناظرین ابھی دیکھ رہے ہیں</div>
+            </div>
+          </div>
+          <div style="display:grid;gap:20px;">
+            <div class="vhome-card" onclick="nav('video')">
+              <div class="vhc-thumb"><img src="https://images.unsplash.com/photo-1540747913346-19212a4b423e?w=500&q=80" alt=""><div class="vhc-play"></div><div class="vhc-dur">8:42</div></div>
+              <div class="vhc-body"><div class="vhc-cat">کھیل</div><div class="vhc-title">پاک-بھارت میچ کی خاص جھلکیاں</div><div class="vhc-views">1.2M مرتبہ دیکھا</div></div>
+            </div>
+            <div class="vhome-card" onclick="nav('video')">
+              <div class="vhc-thumb"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=500&q=80" alt=""><div class="vhc-play"></div><div class="vhc-dur">15:20</div></div>
+              <div class="vhc-body"><div class="vhc-cat">ٹیکنالوجی</div><div class="vhc-title">AI کا پاکستان پر اثر — ماہرین کی گفتگو</div><div class="vhc-views">456K مرتبہ دیکھا</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE -->
+    <div class="sec-head" style="margin-top:28px;">
+      <div class="sec-dot"></div><div class="sec-title">خاص رپورٹ</div><div class="sec-line"></div>
+    </div>
+    <div class="feature-layout">
+      <div class="feat-main" onclick="nav('article')">
+        <div class="feat-main-img"><img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=900&q=80" alt=""></div>
+        <div class="nc-cat">اقتصادیات</div>
+        <div class="nc-title" style="font-family:var(--font-urdu);font-size:20px;margin-top:6px;">پاکستان کی ڈیجیٹل معیشت: نئے مواقع اور چیلنجز کا جائزہ</div>
+        <div style="font-family:var(--font-urdu);font-size:14px;color:var(--muted);line-height:1.8;margin-top:6px;">2030 تک پاکستان کی ڈیجیٹل معیشت 10 ارب ڈالر تک پہنچنے کا امکان — لیکن اس کے لیے بنیادی اصلاحات ضروری ہیں۔</div>
+        <div class="nc-meta" style="margin-top:8px;">4 گھنٹے قبل · خصوصی نامہ نگار</div>
+      </div>
+      <div class="list-stories">
+        <div class="ls-item" onclick="nav('article')"><img class="ls-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&q=80" alt=""><div><div class="ls-title">پاکستان میں براڈ بینڈ کی تیزی — 10 کروڑ صارفین کا نیا ریکارڈ</div><div class="ls-meta">ٹیک · 5 گھنٹے قبل</div></div></div>
+        <div class="ls-item" onclick="nav('article')"><img class="ls-img" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&q=80" alt=""><div><div class="ls-title">اسٹارٹ اپ کلچر پاکستان میں — سلیکون ویلی کا پاکستانی ورژن</div><div class="ls-meta">کاروبار · 6 گھنٹے قبل</div></div></div>
+        <div class="ls-item" onclick="nav('article')"><img class="ls-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&q=80" alt=""><div><div class="ls-title">ای کامرس نے پاکستان میں نئی بہار لائی — چھوٹے کاروباروں کو فائدہ</div><div class="ls-meta">کاروبار · 7 گھنٹے قبل</div></div></div>
+        <div class="ls-item" onclick="nav('article')"><img class="ls-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&q=80" alt=""><div><div class="ls-title">سائبر سیکیورٹی: پاکستان کے ڈیجیٹل انفراسٹرکچر کو خطرات</div><div class="ls-meta">ٹیک · 8 گھنٹے قبل</div></div></div>
+      </div>
+    </div>
+
+    <!-- PHOTO ESSAY -->
+    <div class="photo-essay">
+      <div class="pe-item big" onclick="nav('article')"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80" alt=""><div class="pe-cap"><span>تصویری مضمون: پاکستان کے شہر — ماضی اور حال</span></div></div>
+      <div class="pe-item" onclick="nav('article')"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt=""><div class="pe-cap"><span>لاہور کی ثقافت</span></div></div>
+      <div class="pe-item" onclick="nav('article')"><img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400&q=80" alt=""><div class="pe-cap"><span>روایتی فنون</span></div></div>
+      <div class="pe-item" onclick="nav('article')"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt=""><div class="pe-cap"><span>شمالی پاکستان</span></div></div>
+      <div class="pe-item" onclick="nav('article')"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80" alt=""><div class="pe-cap"><span>قدرتی مناظر</span></div></div>
+    </div>
+
+    <!-- POLL -->
+    <div class="poll-widget">
+      <div class="poll-q">آپ کی رائے میں پاکستان کی سب سے بڑی ترجیح کیا ہونی چاہیے؟</div>
+      <div class="poll-opt" onclick="vote(0)"><div class="poll-label">معیشت</div><div class="poll-bar-wrap"><div class="poll-bar" id="pb0" style="width:42%"><span class="poll-pct">42%</span></div></div><div class="poll-count" id="pc0">8,421</div></div>
+      <div class="poll-opt" onclick="vote(1)"><div class="poll-label">تعلیم</div><div class="poll-bar-wrap"><div class="poll-bar" id="pb1" style="width:31%"><span class="poll-pct">31%</span></div></div><div class="poll-count" id="pc1">6,234</div></div>
+      <div class="poll-opt" onclick="vote(2)"><div class="poll-label">سلامتی</div><div class="poll-bar-wrap"><div class="poll-bar" id="pb2" style="width:18%"><span class="poll-pct">18%</span></div></div><div class="poll-count" id="pc2">3,612</div></div>
+      <div class="poll-opt" onclick="vote(3)"><div class="poll-label">صحت</div><div class="poll-bar-wrap"><div class="poll-bar" id="pb3" style="width:9%"><span class="poll-pct">9%</span></div></div><div class="poll-count" id="pc3">1,808</div></div>
+      <div class="poll-footer">کل ووٹ: 20,075 · کسی آپشن پر کلک کریں</div>
+    </div>
+
+    <!-- OPINION -->
+    <div class="sec-head"><div class="sec-dot"></div><div class="sec-title">رائے و تبصرہ</div><div class="sec-line"></div></div>
+    <div class="opinion-row">
+      <div class="op-card" onclick="nav('article')">
+        <div class="op-av-row"><img class="op-av" src="https://randomuser.me/api/portraits/men/32.jpg" alt=""><div><div class="op-name">کامران اکبر</div><div class="op-role">ماہر اقتصادیات</div></div></div>
+        <div class="op-title">"پاکستان کی معیشت کا مستقبل: چیلنجز اور مواقع — ایک جائزہ"</div>
+        <div class="op-read">مکمل پڑھیں →</div>
+      </div>
+      <div class="op-card" onclick="nav('article')">
+        <div class="op-av-row"><img class="op-av" src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><div><div class="op-name">ڈاکٹر عائشہ ملک</div><div class="op-role">ٹیک ماہر</div></div></div>
+        <div class="op-title">"مصنوعی ذہانت کا انسانیت پر اثر: خوف یا امید؟"</div>
+        <div class="op-read">مکمل پڑھیں →</div>
+      </div>
+      <div class="op-card" onclick="nav('article')">
+        <div class="op-av-row"><img class="op-av" src="https://randomuser.me/api/portraits/men/67.jpg" alt=""><div><div class="op-name">طارق محمود</div><div class="op-role">سیاسی تجزیہ نگار</div></div></div>
+        <div class="op-title">"مسلمان دنیا میں نئی قوت کے مراکز — کیا بدل رہا ہے؟"</div>
+        <div class="op-read">مکمل پڑھیں →</div>
+      </div>
+    </div>
+
+    <!-- MORE NEWS -->
+    <div class="sec-head"><div class="sec-dot"></div><div class="sec-title">مزید خبریں</div><div class="sec-line"></div></div>
+    <div class="grid-3">
+      <div class="ncard" onclick="nav('article')"><div class="ncard-img"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&q=80" alt=""></div><div class="ncard-body"><div class="nc-cat">فنون</div><div class="nc-title">پاکستانی فلم نے بین الاقوامی ایوارڈ جیتا — قوم کا فخر</div><div class="nc-meta">کل · رانا کامران</div></div></div>
+      <div class="ncard" onclick="nav('article')"><div class="ncard-img"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80" alt=""></div><div class="ncard-body"><div class="nc-cat">طرز زندگی</div><div class="nc-title">پاکستانی کھانے کی دنیا بھر میں دھمک — لندن میں دیسی ریستوران کی دھاک</div><div class="nc-meta">کل · فرح ناز</div></div></div>
+      <div class="ncard" onclick="nav('article')"><div class="ncard-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt=""></div><div class="ncard-body"><div class="nc-cat">سائنس</div><div class="nc-title">پاکستانی سائنسدان نے نادر بیماری کا علاج دریافت کیا — دنیا حیران</div><div class="nc-meta">2 دن قبل · ریسرچ ڈیسک</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     VIDEO PAGE
+     ====================================================== -->
+<div class="page" id="page-video">
+  <div class="video-layout">
+    <div class="vplayer-wrap">
+      <canvas id="mainCanvas" height="400" onclick="togglePlay()"></canvas>
+      <div class="vcontrols">
+        <div class="vprog-wrap" id="vprogWrap" onclick="seekVid(event)">
+          <div class="vprog-fill" id="vprogFill"></div>
+        </div>
+        <div class="vctrl-row">
+          <div class="vctrl-left">
+            <button class="vcbtn" onclick="prevVid()" title="پچھلی">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+            </button>
+            <button class="vcbtn" id="vPlayBtn" onclick="togglePlay()">
+              <svg viewBox="0 0 24 24" fill="currentColor" id="vPlayIco"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <button class="vcbtn" onclick="nextVid()" title="اگلی">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18 14.5 12 6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2z"/></svg>
+            </button>
+            <div class="vvol">
+              <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+              <input type="range" min="0" max="100" value="80" step="1">
+            </div>
+          </div>
+          <div class="vtime" id="vTimeTxt">0:00 / 0:00</div>
+        </div>
+      </div>
+      <div class="vmeta">
+        <div class="vm-cat" id="vmCat">براہ راست</div>
+        <div class="vm-title" id="vmTitle">قومی اسمبلی کا اجلاس — بجٹ پر اہم بحث جاری</div>
+        <div class="vm-info" id="vmInfo">45,230 مرتبہ دیکھا · ابھی</div>
+        <div class="vm-actions">
+          <button class="vm-btn">پسند</button>
+          <button class="vm-btn">شیئر</button>
+          <button class="vm-btn">بعد میں دیکھیں</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="vplaylist-sidebar">
+      <div class="vsb-head">
+        <div class="vsb-title">ویڈیو فہرست</div>
+        <div class="auto-wrap" onclick="toggleAuto()">
+          <div class="sw-track" id="autoSwitch"></div>
+          <div class="auto-lbl">خودکار</div>
+        </div>
+      </div>
+      <div class="vplaylist" id="vplaylistEl"></div>
+      <div class="cd-bar" id="cdBar">
+        <canvas id="cdThumbCanvas" width="56" height="36"></canvas>
+        <div class="cd-info">
+          <div class="cd-lbl">اگلی ویڈیو</div>
+          <div class="cd-title" id="cdTitle"></div>
+        </div>
+        <div class="cd-num" id="cdNum">5</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     ARTICLE PAGE
+     ====================================================== -->
+<div class="page" id="page-article">
+  <div class="main">
+    <div class="article-layout">
+      <div>
+        <div class="art-breadcrumb">
+          <span class="art-cat-lnk" onclick="nav('world')">دنیا</span>
+          <span class="art-sep">›</span>
+          <span class="art-cat-lnk" onclick="nav('world')">جیو پولیٹکس</span>
+        </div>
+        <h1 class="art-title">عالمی سیاست میں نئی کروٹ: نئے اتحاد اور جیو پولیٹکس کا نیا نقشہ</h1>
+        <p class="art-sub">آج کی دنیا میں سیاسی منظر نامہ تیزی سے بدل رہا ہے — کیا نئے اتحاد پرانے توازی تعلقات کی جگہ لے سکتے ہیں؟</p>
+        <div class="art-byline">
+          <img class="art-av" src="https://randomuser.me/api/portraits/men/45.jpg" alt="">
+          <div>
+            <div class="art-name">احمد رضا خان</div>
+            <div class="art-date">منگل، 17 مارچ 2026 · 12 منٹ مطالعہ</div>
+            <div class="share-row">
+              <button class="sh-btn sh-fb">فیس بک</button>
+              <button class="sh-btn sh-tw">ٹویٹر</button>
+              <button class="sh-btn sh-wa">واٹس ایپ</button>
+              <button class="sh-btn sh-cp" onclick="alert('لنک کاپی ہو گیا!')">لنک کاپی</button>
+            </div>
+          </div>
+        </div>
+        <img class="art-hero" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&q=85" alt="">
+        <div class="art-caption">آج کی دنیا میں اتحادوں کا نیا نظام ابھر رہا ہے | تصویر: Getty Images</div>
+        <div class="art-body">
+          <p class="dropcap">دنیا کی جیو پولیٹکس میں آج ایک ایسا نیا دور شروع ہو رہا ہے جس نے تعلقات عالمی کو ایک نئے رنگ میں رنگ دیا ہے۔ نئے اتحاد، پرانے توازی تعلقات کی جگہ لے رہے ہیں، اور علاقائی سیاست میں ایسی تبدیلیاں آ رہی ہیں جو پہلے کبھی نہیں دیکھی گئیں۔</p>
+          <p>ایشیا، یورپ اور مشرق وسطیٰ — ہر جگہ ایک ایسا سیاسی ابال دیکھا جا رہا ہے جو مختلف زاویوں سے مختلف لوگوں کو مختلف طرح نظر آتا ہے۔ پاکستان اس سب میں کہاں کھڑا ہے؟ یہی سوال آج کے تجزیہ نگاروں کے ذہن میں ہے۔</p>
+          <div class="pull-quote">"جیو پولیٹکس کا نیا کھیل صرف فوج اور پیسہ نہیں ہے — اب معلومات، ٹیکنالوجی اور سافٹ پاور بھی برابر کی جنگ لڑتی ہے۔" — پروفیسر نسیم بیگ</div>
+          <p>پاکستان نے ہمیشہ اپنی خارجہ سیاست میں ایک توازن قائم رکھنے کی کوشش کی ہے۔ چین کے ساتھ دوستی، امریکہ کے ساتھ تعلقات، اور عرب دنیا کے ساتھ مضبوط روابط — یہ تکونا پاکستان کی خارجہ سیاست کی بنیاد رہی ہے۔</p>
+          <p>ماہرین کا کہنا ہے کہ 2026 کا سیاسی خاکہ 2016 سے بالکل الگ ہے۔ ڈیجیٹل جنگوں، اقتصادی پابندیوں اور موسمیاتی تبدیلی نے سیاست کے میدان میں نئے کردار پیدا کر دیے ہیں۔</p>
+        </div>
+        <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--border);">
+          <div style="font-family:var(--font-urdu);font-size:13px;color:var(--muted);margin-bottom:8px;">ٹیگز:</div>
+          <span class="art-tag">سیاست</span><span class="art-tag">خارجہ سیاست</span><span class="art-tag">جیو پولیٹکس</span><span class="art-tag">پاکستان</span><span class="art-tag">ایشیا</span>
+        </div>
+      </div>
+      <div>
+        <div class="widget">
+          <div class="widget-head">ٹرینڈنگ</div>
+          <div class="widget-body">
+            <div class="tr-item" onclick="nav('article')"><div class="tr-num">01</div><div class="tr-title">IMF نے پاکستان کے لیے نیا پیکج منظور کیا</div></div>
+            <div class="tr-item" onclick="nav('article')"><div class="tr-num">02</div><div class="tr-title">پاکستان کرکٹ: وقار یونس کوچ بنے</div></div>
+            <div class="tr-item" onclick="nav('article')"><div class="tr-num">03</div><div class="tr-title">لاہور میں سموگ الرٹ — سکول بند</div></div>
+            <div class="tr-item" onclick="nav('article')"><div class="tr-num">04</div><div class="tr-title">CPEC 2.0 کا اعلان — نئی سرمایہ کاری</div></div>
+            <div class="tr-item" onclick="nav('article')"><div class="tr-num">05</div><div class="tr-title">پاکستانی ڈایاسپورا نے 30 ارب ڈالر ترسیل بھیجے</div></div>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-head">نیوز لیٹر</div>
+          <div class="widget-body">
+            <p style="font-family:var(--font-urdu);font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.7;">روز صبح KNN کی خاص خبریں سیدھا اپنے ای میل پر پائیں۔</p>
+            <input class="nl-inp" type="email" placeholder="آپ کا ای میل...">
+            <button class="nl-btn" onclick="alert('سبسکرائب ہو گئے!')">سبسکرائب کریں</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     CATEGORY PAGE
+     ====================================================== -->
+<div class="page" id="page-category">
+  <div class="cat-banner">
+    <div class="cat-banner-inner">
+      <h1 id="catTitle">دنیا</h1>
+      <p id="catDesc">دنیا بھر کی تازہ خبریں اور رپورٹس</p>
+    </div>
+  </div>
+  <div class="main" style="padding-top:0;">
+    <div class="grid-4" id="catGrid"></div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">KNN</div>
+    <div class="footer-urdu">خبر نامہ نیٹ ورک</div>
+    <div class="footer-tag">سچ کی آواز — ہر خبر، ہر لمحہ</div>
+    <div class="footer-grid">
+      <div class="footer-col"><h4>دنیا</h4><a>ایشیا</a><a>یورپ</a><a>مشرق وسطیٰ</a><a>افریقہ</a><a>امریکہ</a></div>
+      <div class="footer-col"><h4>پاکستان</h4><a>سیاست</a><a>معیشت</a><a>معاشرہ</a><a>صوبے</a></div>
+      <div class="footer-col"><h4>کاروبار</h4><a>مارکیٹس</a><a>ٹیکنالوجی</a><a>توانائی</a><a>زراعت</a></div>
+      <div class="footer-col"><h4>طرز زندگی</h4><a>صحت</a><a>کھانا</a><a>سفر</a><a>فنون</a></div>
+      <div class="footer-col"><h4>KNN</h4><a>ہمارے بارے میں</a><a>رابطہ کریں</a><a>اشتہار</a><a>رازداری</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 خبر نامہ نیٹ ورک۔ تمام حقوق محفوظ ہیں۔</div>
+      <div>Terms · Privacy · Cookies</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================================================
+     JAVASCRIPT
+     ====================================================== -->
+<script src="script.js"></script>
+</body>
+</html>
